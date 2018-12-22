@@ -1,38 +1,143 @@
 import React, { Component } from 'react'
 import Continents from './Continents'
 
-const { API_KEY } = process.env
-const API_URL = 'http://api.musicgraph.com/api/v2/artist/suggest'
-
 class SearchBox extends Component {
   state = {
     search: '',
-    results: []
-  }
-
-  getInfo = () => {
-    console.log(this.state.search);
-    fetch(`${API_URL}?api_key=${API_KEY}&prefix=${this.state.search}&limit=7`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          results: data.data
-        })
-      })
-      .catch(e => console.log("help"))
-  }
-
-  handleInputChange = () => {
-    this.setState({
-      search: this.search.value
-    }, () => {
-      if (this.state.search && this.state.search.length > 1) {
-        if (this.state.search.length % 1 === 0) {
-          this.getInfo()
+    pickedContinent: '',
+    list: "data",
+    continents: [{
+      "continent": "Africa",
+      "countries": [
+        {
+          "name": "Nigeria",
+          "flag": "🇳🇬"
+        },
+        {
+          "name": "Ethiopia",
+          "flag": "🇪🇹"
+        },
+        {
+          "name": "Egypt",
+          "flag": "🇪🇬"
+        },
+        {
+          "name": "DR Congo",
+          "flag": "🇨🇩"
+        },
+        {
+          "name": "South Africa",
+          "flag": "🇿🇦"
         }
-      } else if (!this.state.search) {
-      }
-    })
+      ]
+    },
+    {
+      "continent": "America",
+      "countries": [
+        {
+          "name": "USA",
+          "flag": "🇺🇸"
+        },
+        {
+          "name": "Brazil",
+          "flag": "🇧🇷"
+        },
+        {
+          "name": "Mexico",
+          "flag": "🇲🇽"
+        },
+        {
+          "name": "Colombia",
+          "flag": "🇨🇴"
+        },
+        {
+          "name": "Argentina",
+          "flag": "🇦🇷"
+        }
+      ]
+    },
+    {
+      "continent": "Asia",
+      "countries": [
+        {
+          "name": "China",
+          "flag": "🇨🇳"
+        },
+        {
+          "name": "India",
+          "flag": "🇮🇳"
+        },
+        {
+          "name": "Indonesia",
+          "flag": "🇮🇩"
+        },
+        {
+          "name": "Pakistan",
+          "flag": "🇵🇰"
+        },
+        {
+          "name": "Bangladesh",
+          "flag": "🇧🇩"
+        }
+      ]
+    },
+    {
+      "continent": "Europe",
+      "countries": [
+        {
+          "name": "Russia",
+          "flag": "🇷🇺"
+        },
+        {
+          "name": "Germany",
+          "flag": "🇩🇪"
+        },
+        {
+          "name": "UK",
+          "flag": "🇬🇧"
+        },
+        {
+          "name": "France",
+          "flag": "🇫🇷"
+        },
+        {
+          "name": "Italy",
+          "flag": "🇮🇹"
+        }
+      ]
+    },
+    {
+      "continent": "Oceania",
+      "countries": [
+        {
+          "name": "Australia",
+          "flag": "🇦🇺"
+        },
+        {
+          "name": "Papua New Guinea",
+          "flag": "🇵🇬"
+        },
+        {
+          "name": "New Zealand",
+          "flag": "🇳🇿"
+        },
+        {
+          "name": "Fiji",
+          "flag": "🇫🇯"
+        },
+        {
+          "name": "Solomon Islands",
+          "flag": "🇸🇧"
+        }
+      ]
+    }]
+  }
+  
+  handleInputChange = (event) => {
+    let arr = this.state.continents.map(r =>{ return r.continent })
+    if(arr.includes(event.target.value)){
+      this.setState({ pickedContinent: event.target.value })
+    }
   }
 
   render() {
@@ -42,8 +147,10 @@ class SearchBox extends Component {
           placeholder="Search for a continent..."
           ref={input => this.search = input}
           onChange={this.handleInputChange}
+          list={this.state.list}
         />
-        <Continents results={this.state.results} />
+      <Continents resultsContinents={this.state.continents} data={this.state.list} />
+      {this.state.pickedContinent && <div> You have Selected: {this.state.pickedContinent}</div>}
       </form>
     )
   }

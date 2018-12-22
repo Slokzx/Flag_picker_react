@@ -137,6 +137,8 @@ class SearchBox extends Component {
     let arr = this.state.continents.map(r =>{ return r.continent })
     if(arr.includes(event.target.value)){
       this.setState({ pickedContinent: event.target.value })
+      this.props.selectedContinent(event.target.value)
+      this.props.listContinents(this.state.continents)
     }
   }
 
@@ -150,7 +152,12 @@ class SearchBox extends Component {
           list={this.state.list}
         />
       <Continents resultsContinents={this.state.continents} data={this.state.list} />
-      {this.state.pickedContinent && <div> You have Selected: {this.state.pickedContinent}</div>}
+      { this.state.pickedContinent && 
+          <div> 
+            <h3>You have Selected: </h3>
+            {this.state.pickedContinent}
+          </div>  
+        }
       </form>
     )
   }

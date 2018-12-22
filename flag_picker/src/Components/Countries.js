@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Countries.css';
 
 class Countries extends Component{
   state = {
@@ -37,9 +38,9 @@ class Countries extends Component{
           <input
             onFocus={this.handleInputChange} 
             list= "dropbox"/>
-          <ul id="dropbox">
+          <ul id="dropbox" style={{ overflow: "auto"}}>
             {this.state.pickedContinent.map((r,i) =>
-              <li style={{ width: "12em", textAlign: "left", overflow: "auto"}} key={i}>
+              <li style={{ width: "12em", textAlign: "left"}} key={i}>
                 <input type="checkbox" id={r.flag} onChange={this.handleChange}/>{r.name}
               </li>  
             )}

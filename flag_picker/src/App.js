@@ -53,7 +53,7 @@ class App extends Component {
             <div className="column">
               <Display  
                 countriesSelected={this.state.countriesSelected}/>
-            </div> 
+            </div>
         }
       </div>
     );

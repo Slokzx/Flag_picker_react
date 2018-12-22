@@ -142,19 +142,35 @@ class SearchBox extends Component {
     }
   }
 
+  handleClick = () =>{
+    this.setState({
+      pickedContinent: ''
+    })
+    document.getElementById('Input').value = ''
+  }
+
   render() {
     return (
       <form>
         <h2>Step 1</h2>
         <p>Select a Continent.</p>
         <input
-          placeholder="Search for a continent..."
+          id="Input"
           ref={input => this.search = input}
           onChange={this.handleInputChange}
           list={this.state.list}
         />
       <Continents resultsContinents={this.state.continents} data={this.state.list} />
-      {this.state.pickedContinent && <div> You have Selected: {this.state.pickedContinent}</div>}
+      <br></br>
+      {this.state.pickedContinent && 
+        <div> You have Selected:
+          <br></br><br></br>
+          {this.state.pickedContinent}
+          <br></br><br></br>
+          <button onClick={this.handleClick}>Clear Continent</button>
+        </div>
+       }
+       
       </form>
     )
   }

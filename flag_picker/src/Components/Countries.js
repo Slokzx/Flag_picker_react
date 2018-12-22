@@ -25,6 +25,10 @@ class Countries extends Component{
     this.props.selectedCountries(this.state.country)
   }
 
+  handleClearChange= () =>{
+    this.setState({ pickedContinent: []})
+  }
+
   render(){
     return (
         <form>
@@ -40,6 +44,8 @@ class Countries extends Component{
               </li>  
             )}
           </ul>
+          <br></br>
+          {this.state.pickedContinent.length>0 && <button onClick={this.handleClearChange}>Clear Countries</button>}
         </form>
     )
   }

@@ -7,7 +7,9 @@ class Display extends Component{
   }
 
   handleClick =() =>{
-    this.setState({ countries:''})
+    this.setState({ 
+      countries: []
+    })
   }
   render(){
     return (

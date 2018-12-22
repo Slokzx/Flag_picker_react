@@ -30,10 +30,12 @@ class Countries extends Component{
         <form>
           <h2> Step 2 </h2>
           <p> Now, select a country. </p>
-          <input onFocus={this.handleInputChange} />
-          <ul>
+          <input
+            onFocus={this.handleInputChange} 
+            list= "dropbox"/>
+          <ul id="dropbox">
             {this.state.pickedContinent.map((r,i) =>
-              <li style={{ width: "12em", textAlign: "left", overflow: "auto"}}>
+              <li style={{ width: "12em", textAlign: "left", overflow: "auto"}} key={i}>
                 <input type="checkbox" id={r.flag} onChange={this.handleChange}/>{r.name}
               </li>  
             )}

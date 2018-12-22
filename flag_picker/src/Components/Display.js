@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Display = (props) => {
+class Display extends Component{
 
-  return (
-    <div>
-      {props.countriesSelected}
-    </div>
-  )
+  state ={
+    countries: this.props.countriesSelected
+  }
+
+  render(){
+    return (
+      <div>
+        {this.props.countriesSelected}
+      </div>
+    )
+  }
 }
 
 export default Display

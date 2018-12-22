@@ -145,20 +145,16 @@ class SearchBox extends Component {
   render() {
     return (
       <form>
-        <h2> Step 1</h2>
-        <p> Select a continent </p>
+        <h2>Step 1</h2>
+        <p>Select a Continent.</p>
         <input
+          placeholder="Search for a continent..."
           ref={input => this.search = input}
           onChange={this.handleInputChange}
           list={this.state.list}
         />
       <Continents resultsContinents={this.state.continents} data={this.state.list} />
-      { this.state.pickedContinent && 
-          <div> 
-            <h3>You have Selected: </h3>
-            {this.state.pickedContinent}
-          </div>  
-        }
+      {this.state.pickedContinent && <div> You have Selected: {this.state.pickedContinent}</div>}
       </form>
     )
   }

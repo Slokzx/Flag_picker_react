@@ -1,19 +1,28 @@
-import React from 'react'
+import React, { Component }  from 'react'
 
-const Continents = (props) => {
-  let divStyles = {
-    overflow: 'auto'
+
+class Continents extends Component{
+  state={
+    selected: false
   }
-
+  keypressChange = (e) =>{
+    if(e.key='enter'){
+      this.setState({
+        selected: true
+      })
+    }
+  }
+  render(){
   return (
-    <div style={divStyles}>
-        <datalist id={props.data}>
-          {props.resultsContinents.map((r,i) =>
-              <option value={r.continent} key={i}/>
+    <div>
+        <datalist id={this.props.data}>
+          {this.props.resultsContinents.map((r,i) =>
+              <option value={r.continent} key={i} selected={this.state.selected} onKeyPress={this.keypressChange}/>
           )}
         </datalist>
     </div>
   )
+}
 }
 
 export default Continents

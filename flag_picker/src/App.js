@@ -12,22 +12,15 @@ class App extends Component {
   }
 
   fromContinent = (data) =>{
-    this.setState({
-      continentSelected: data
-    })
+    this.setState({ continentSelected: data })
   }
 
   listContinents = (list) =>{
-    this.setState({
-      continents: list
-    })
+    this.setState({ continents: list })
   }
 
   selectedCountries = (data) =>{
-    this.setState({
-      countriesSelected: data
-    })
-    console.log(data)
+    this.setState({ countriesSelected: data })
   }
 
   render() {

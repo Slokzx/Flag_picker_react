@@ -165,7 +165,7 @@ class SearchBox extends Component {
       {this.state.pickedContinent && 
         <div> You have Selected:
           <br></br><br></br>
-          {this.state.pickedContinent}
+         <h2>{this.state.pickedContinent}</h2> 
           <br></br><br></br>
           <button onClick={this.handleClick}>Clear Continent</button>
         </div>

@@ -6,10 +6,16 @@ class Display extends Component{
     countries: this.props.countriesSelected
   }
 
+  handleClick =() =>{
+    this.setState({ countries:''})
+  }
   render(){
     return (
       <div>
-        {this.props.countriesSelected}
+        <h2>Selected Flags:</h2>
+        <div>{this.state.countries}</div>
+        <br></br>
+        <button onClick={this.handleClick}>Clear Flags</button>
       </div>
     )
   }

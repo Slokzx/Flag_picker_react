@@ -145,8 +145,9 @@ class SearchBox extends Component {
   render() {
     return (
       <form>
+        <h2> Step 1</h2>
+        <p> Select a continent </p>
         <input
-          placeholder="Search for a continent..."
           ref={input => this.search = input}
           onChange={this.handleInputChange}
           list={this.state.list}

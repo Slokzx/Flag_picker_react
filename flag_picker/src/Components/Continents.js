@@ -6,7 +6,7 @@ class Continents extends Component{
     selected: false
   }
   keypressChange = (e) =>{
-    if(e.key='enter'){
+    if(e.key==='enter'){
       this.setState({
         selected: true
       })

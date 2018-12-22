@@ -137,20 +137,40 @@ class SearchBox extends Component {
     let arr = this.state.continents.map(r =>{ return r.continent })
     if(arr.includes(event.target.value)){
       this.setState({ pickedContinent: event.target.value })
+      this.props.selectedContinent(event.target.value)
+      this.props.listContinents(this.state.continents)
     }
+  }
+
+  handleClick = () =>{
+    this.setState({
+      pickedContinent: ''
+    })
+    document.getElementById('Input').value = ''
   }
 
   render() {
     return (
       <form>
+        <h2>Step 1</h2>
+        <p>Select a Continent.</p>
         <input
-          placeholder="Search for a continent..."
+          id="Input"
           ref={input => this.search = input}
           onChange={this.handleInputChange}
           list={this.state.list}
         />
       <Continents resultsContinents={this.state.continents} data={this.state.list} />
-      {this.state.pickedContinent && <div> You have Selected: {this.state.pickedContinent}</div>}
+      <br></br>
+      {this.state.pickedContinent && 
+        <div> You have Selected:
+          <br></br><br></br>
+         <h2>{this.state.pickedContinent}</h2> 
+          <br></br><br></br>
+          <button onClick={this.handleClick}>Clear Continent</button>
+        </div>
+       }
+       
       </form>
     )
   }
